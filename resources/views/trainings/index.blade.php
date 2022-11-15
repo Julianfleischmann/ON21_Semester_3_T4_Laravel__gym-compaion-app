@@ -11,6 +11,17 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h1>Hier sind alle Trainings</h1>
 
+                    <table>
+                        @foreach ($trainings as $training)
+                            <tr>
+                                <td>Traininggewicht: {{ $training->training_weight }}</td>
+                                <td>Wiederholungen: {{ $training->training_redo }}</td>
+                            </tr>
+                        @endforeach
+{{--                        {{ $trainings }}--}}
+                    </table>
+
+
                     <a class="btn btn-primary" href="{{ route('trainings.create') }}">Create new Training</a>
                 </div>
             </div>
