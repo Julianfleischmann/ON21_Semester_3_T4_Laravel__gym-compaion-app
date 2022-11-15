@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TrainingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,8 @@ require __DIR__.'/auth.php';
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
+
+    Route::resource('trainings', TrainingController::class);
 
     Route::get('/dashboard', function () {
         return view('dashboard');
