@@ -14,8 +14,8 @@ use App\Http\Controllers\TrainingController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('', function () {
+    return redirect( '/trainings');
 });
 
 

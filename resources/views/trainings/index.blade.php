@@ -16,6 +16,7 @@
                             <tr>
                                 <td>Traininggewicht: {{ $training->training_weight }}</td>
                                 <td>Wiederholungen: {{ $training->training_redo }}</td>
+                                <td><a class="btn btn-primary" href="{{ route('trainings.edit',$training->id) }}">Edit</a></td>
                             </tr>
                         @endforeach
 {{--                        {{ $trainings }}--}}
