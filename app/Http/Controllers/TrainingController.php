@@ -2,22 +2,43 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Company;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Training;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Arr;
 
 class TrainingController extends Controller
 {
+    private $user;
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->user = Auth::user()->id;
+    }
 
     /**
+     * Display a listing of the resource.
      * Query Builder from Laravel will be used here
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return \Illuminate\Http\Response
      */
-    public function index() {
+    public function index()
+    {
+        // der Variable trainings alle Daten aus dem Model Training zuweisen und an den view trainings.index übergeben
         $trainings = Training::all();
         return view('trainings.index', compact('trainings'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function create()
+    {
+        return view('trainings.create');
     }
 
     /**
@@ -32,8 +53,25 @@ class TrainingController extends Controller
             'training_redo' => 'required'
         ]);
 
-        Training::create($request->post());
+        // Den aktuellen Array mithilfe der Helper-Function Arr::add der Variable des aktuellen Users erweitern
+        $data = $request->post();
+        $data = Arr::add($data, 'training_user_id', $this->user);
+        //return print_r($data);
+
+        Training::create($data);
+//        Training::create($request->post());
         return redirect()->route('trainings.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
     }
 
     /**
@@ -64,12 +102,11 @@ class TrainingController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Contracts\View\View
+     * @param Training $training
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function create()
-    {
-        return view('trainings.create');
+    public function destroy(Training $training) {
+        $training->delete();
+        return redirect()->route('trainings.index');
     }
 }

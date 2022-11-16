@@ -17,6 +17,10 @@ return new class extends Migration
             $table->id();
             $table->decimal('training_weight');
             $table->decimal('training_redo');
+            // User, der das Training anlegt wird der Tabelle hinzugefügt
+            // Aus Laravel-Doku
+            $table->unsignedBigInteger('training_user_id');
+            $table->foreign('training_user_id')->references('id')->on('users');
             $table->timestamp('training_created_at')->nullable();
             $table->timestamps();
         });

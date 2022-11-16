@@ -17,6 +17,13 @@
                                 <td>Traininggewicht: {{ $training->training_weight }}</td>
                                 <td>Wiederholungen: {{ $training->training_redo }}</td>
                                 <td><a class="btn btn-primary" href="{{ route('trainings.edit',$training->id) }}">Edit</a></td>
+                                <td>
+                                    <form action="{{ route('trainings.destroy', $training->id) }}" method="Post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit">Delete</button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
 {{--                        {{ $trainings }}--}}
