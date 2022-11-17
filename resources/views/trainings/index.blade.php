@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+{{--            {{ __('Dashboard') }}--}}
         </h2>
     </x-slot>
 
@@ -12,10 +12,20 @@
                     <h1>Hier sind alle Trainings</h1>
 
                     <table>
+                        <tr>
+                            <th>Trainingsgewicht</th>
+                            <th>Wiederholungen</th>
+                            <th>Erstellt von</th>
+                            <th>Bearbeiten</th>
+                            <th>Löschen</th>
+                        </tr>
+
                         @foreach ($trainings as $training)
+
                             <tr>
-                                <td>Traininggewicht: {{ $training->training_weight }}</td>
+                                <td>{{ $training->training_weight }}</td>
                                 <td>Wiederholungen: {{ $training->training_redo }}</td>
+                                <td>{{ $training->getUser->name }}</td>
                                 <td><a class="btn btn-primary" href="{{ route('trainings.edit',$training->id) }}">Edit</a></td>
                                 <td>
                                     <form action="{{ route('trainings.destroy', $training->id) }}" method="Post">

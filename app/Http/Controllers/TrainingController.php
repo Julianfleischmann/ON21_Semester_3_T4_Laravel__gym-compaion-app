@@ -28,7 +28,8 @@ class TrainingController extends Controller
     {
         // der Variable trainings alle Daten aus dem Model Training zuweisen und an den view trainings.index übergeben
         $trainings = Training::all();
-        return view('trainings.index', compact('trainings'));
+
+        return view('trainings.index', compact( 'trainings'));
     }
 
     /**

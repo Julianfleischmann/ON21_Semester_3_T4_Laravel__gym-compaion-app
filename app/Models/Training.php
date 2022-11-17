@@ -22,6 +22,12 @@ class Training extends Model
 //            $fillable->training_user_id = Auth::id();
 //        });
 //    }
+
+
+    public function getUser() {
+        return $this->belongsTo(User::class, 'training_user_id');
+    }
+
 }
 
 
