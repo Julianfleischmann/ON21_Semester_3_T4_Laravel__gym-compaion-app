@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\TrainingName;
 use Illuminate\Http\Request;
 use App\Models\Training;
 use Illuminate\Support\Facades\Auth;
@@ -39,7 +39,8 @@ class TrainingController extends Controller
      */
     public function create()
     {
-        return view('trainings.create');
+        $trainingNames = TrainingName::all();
+        return view('trainings.create', compact('trainingNames'));
     }
 
     /**
@@ -56,7 +57,7 @@ class TrainingController extends Controller
 
         // Den aktuellen Array mithilfe der Helper-Function Arr::add der Variable des aktuellen Users erweitern
         $data = $request->post();
-        $data = Arr::add($data, 'ser_id', $this->user);
+        $data = Arr::add($data, 'user_id', $this->user);
         //return print_r($data);
 
         Training::create($data);

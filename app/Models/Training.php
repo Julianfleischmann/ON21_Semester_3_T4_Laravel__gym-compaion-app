@@ -13,7 +13,7 @@ class Training extends Model
     protected $fillable = [
         'weight',
         'repetition',
-        'name_id'.
+        'name_id',
         'user_id'
     ];
 
@@ -27,6 +27,10 @@ class Training extends Model
 
     public function getUser() {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function getTrainingName() {
+        return $this->belongsTo(TrainingName::class, 'name_id');
     }
 
 }

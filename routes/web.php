@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TrainingNameController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TrainingController;
 
@@ -28,6 +29,13 @@ require __DIR__.'/auth.php';
 Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::resource('trainings', TrainingController::class);
+
+    // Todo: evtl. besseren Namen finden am Ende
+    Route::resource('trainingnames', TrainingNameController::class);
+
+//    Route::get('trainings/names', function(){
+//        return view ('trainings/names/index');
+//    });
 
     Route::get('/dashboard', function () {
         return view('dashboard');
