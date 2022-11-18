@@ -5,7 +5,7 @@
     <input type="text" name="repetition" class="form-control" placeholder="Wiederholungen">
     <select name="name_id" id="name">
         @foreach ($trainingNames as $trainingName)
-        <option value="{{ $trainingName->id }}">{{ $trainingName->name }}</option>
+            <option value="{{ $trainingName->id }}">{{ $trainingName->name }}</option>
         @endforeach
     </select>
 

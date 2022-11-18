@@ -83,7 +83,8 @@ class TrainingController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit(Training $training) {
-        return view('trainings.edit', compact('training'));
+        $trainingNames = TrainingName::all();
+        return view('trainings.edit', compact('training', 'trainingNames'));
     }
 
     /**
