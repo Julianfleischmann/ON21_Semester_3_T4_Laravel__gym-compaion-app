@@ -13,6 +13,7 @@ class Training extends Model
     protected $fillable = [
         'weight',
         'repetition',
+        'name_id'.
         'user_id'
     ];
 

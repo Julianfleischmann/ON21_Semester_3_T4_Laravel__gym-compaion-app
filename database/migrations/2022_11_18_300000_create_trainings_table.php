@@ -20,8 +20,8 @@ return new class extends Migration
 
             // Foreign Keys start
             // Schema aus Laravel-Doku
-            $table->unsignedBigInteger('name');
-            $table->foreign('name')->references('id')->on('training_names');
+            $table->unsignedBigInteger('name_id');
+            $table->foreign('name_id')->references('id')->on('training_names');
 
             // User, der das Training anlegt wird der Tabelle hinzugefügt
             $table->unsignedBigInteger('user_id');
