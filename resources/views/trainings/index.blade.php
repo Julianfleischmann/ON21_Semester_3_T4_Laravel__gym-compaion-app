@@ -13,6 +13,7 @@
 
                     <table>
                         <tr>
+                            <th>Trainingsart</th>
                             <th>Trainingsgewicht</th>
                             <th>Wiederholungen</th>
                             <th>Erstellt von</th>
@@ -23,8 +24,9 @@
                         @foreach ($trainings as $training)
 
                             <tr>
-                                <td>{{ $training->training_weight }}</td>
-                                <td>Wiederholungen: {{ $training->training_redo }}</td>
+                                <td>{{ $training->getTrainingName->name }}</td>
+                                <td>{{ $training->weight }}</td>
+                                <td>{{ $training->repetition }}</td>
                                 <td>{{ $training->getUser->name }}</td>
                                 <td><a class="btn btn-primary" href="{{ route('trainings.edit',$training->id) }}">Edit</a></td>
                                 <td>
