@@ -28,8 +28,6 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
 
             // Foreign Keys end
-
-            $table->timestamp('created_at')->nullable();
             $table->timestamps();
         });
     }
