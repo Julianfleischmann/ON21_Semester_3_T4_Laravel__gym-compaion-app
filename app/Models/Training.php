@@ -11,21 +11,21 @@ class Training extends Model
     use HasFactory;
 
     protected $fillable = [
-        'training_weight',
-        'training_redo',
-        'training_user_id'
+        'weight',
+        'repetition',
+        'user_id'
     ];
 
 //    protected static function booted()
 //    {
 //        static::creating(function ($fillable) {
-//            $fillable->training_user_id = Auth::id();
+//            $fillable->user_id = Auth::id();
 //        });
 //    }
 
 
     public function getUser() {
-        return $this->belongsTo(User::class, 'training_user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
 }

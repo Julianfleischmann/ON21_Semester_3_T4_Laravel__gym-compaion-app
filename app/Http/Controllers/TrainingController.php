@@ -50,13 +50,13 @@ class TrainingController extends Controller
      */
     public function store(Request $request) {
         $request->validate([
-            'training_weight' => 'required',
-            'training_redo' => 'required'
+            'weight' => 'required',
+            'repetition' => 'required'
         ]);
 
         // Den aktuellen Array mithilfe der Helper-Function Arr::add der Variable des aktuellen Users erweitern
         $data = $request->post();
-        $data = Arr::add($data, 'training_user_id', $this->user);
+        $data = Arr::add($data, 'ser_id', $this->user);
         //return print_r($data);
 
         Training::create($data);
@@ -94,8 +94,8 @@ class TrainingController extends Controller
      */
     public function update(Request $request, Training $training) {
         $request->validate([
-            'training_weight' => 'required',
-            'training_redo' => 'required'
+            'weight' => 'required',
+            'repetition' => 'required'
         ]);
 
         $training->fill($request->post())->save();

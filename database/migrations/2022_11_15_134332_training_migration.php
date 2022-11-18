@@ -15,13 +15,21 @@ return new class extends Migration
     {
         Schema::create('trainings', function (Blueprint $table) {
             $table->id();
-            $table->decimal('training_weight');
-            $table->decimal('training_redo');
+            $table->decimal('weight');
+            $table->decimal('repetition');
+
+            // Foreign Keys start
+            // Schema aus Laravel-Doku
+            $table->unsignedBigInteger('name');
+            $table->foreign('name')->references('id')->on('training_names');
+
             // User, der das Training anlegt wird der Tabelle hinzugefügt
-            // Aus Laravel-Doku
-            $table->unsignedBigInteger('training_user_id');
-            $table->foreign('training_user_id')->references('id')->on('users');
-            $table->timestamp('training_created_at')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+
+            // Foreign Keys end
+
+            $table->timestamp('created_at')->nullable();
             $table->timestamps();
         });
     }
