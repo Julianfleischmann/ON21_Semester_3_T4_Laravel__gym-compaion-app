@@ -1,11 +1,15 @@
 <x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Übersicht aller Training Namen') }}
+        </h2>
+    </x-slot>
     <table>
         <tr>
             <th>Training_ID</th>
             <th>Training_Name</th>
             <th>Bearbeiten</th>
             <th>Löschen</th>
-            <th>LÖSCHEN</th>
         </tr>
 
         @foreach ($trainingNames as $trainingName)
