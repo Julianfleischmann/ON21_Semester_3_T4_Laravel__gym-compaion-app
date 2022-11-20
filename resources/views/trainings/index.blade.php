@@ -30,7 +30,7 @@
                                 <td>{{ $training->getUser->name }}</td>
                                 <td><a class="btn btn-primary" href="{{ route('trainings.edit',$training->id) }}">Edit</a></td>
                                 <td>
-                                    <form action="{{ route('trainings.destroy', $training->id) }}" method="Post">
+                                    <form action="{{ route('trainings.destroy', $training->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit">Delete</button>
