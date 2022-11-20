@@ -14,8 +14,10 @@ class TrainingController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
-        $this->user = Auth::user()->id;
+        if (Auth::check()) {
+            $this->middleware('auth');
+            $this->user = Auth::user()->id;
+        }
     }
 
     /**
