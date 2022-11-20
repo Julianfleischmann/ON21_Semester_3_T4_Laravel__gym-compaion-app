@@ -31,7 +31,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('trainings', TrainingController::class);
 
     // Todo: evtl. besseren Namen finden am Ende
-    Route::resource('trainingnames', TrainingNameController::class);
+    Route::resource('training-names', TrainingNameController::class);
 
 //    Route::get('trainings/names', function(){
 //        return view ('trainings/names/index');

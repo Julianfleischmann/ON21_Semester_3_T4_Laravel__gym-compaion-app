@@ -17,7 +17,7 @@ class TrainingNameController extends Controller
     {
         $trainingNames = TrainingName::all();
 
-        return view('trainingnames.index', compact('trainingNames'));
+        return view('training-names.index', compact('trainingNames'));
     }
 
     /**
@@ -27,14 +27,14 @@ class TrainingNameController extends Controller
      */
     public function create()
     {
-        return view('trainingnames.create');
+        return view('training-names.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -44,7 +44,7 @@ class TrainingNameController extends Controller
 
         TrainingName::create($request->post());
 
-        return redirect()->route('trainingnames.index');
+        return redirect()->route('training-names.index');
     }
 
     /**
@@ -62,33 +62,49 @@ class TrainingNameController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit($id)
-    {
-        //
+
+    public function edit(TrainingName $trainingName) {
+        return view('training-names.edit', compact('trainingName'));
     }
+
+
+
+//    public function edit(Training $training)
+//    {
+//
+//        $trainingNames = TrainingName::all();
+//        return view('trainingnames.edit', compact('training', 'trainingNames'));
+//    }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int  $trainingName
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, TrainingName $trainingName)
     {
-        //
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        $trainingName->fill($request->post())->save();
+        return redirect()->route('training-names.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  TrainingName $trainingName
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(TrainingName $trainingName)
     {
-        //
+        $trainingName->delete();
+//        return $trainingName;
+        return redirect()->route('training-names.index');
     }
 }
