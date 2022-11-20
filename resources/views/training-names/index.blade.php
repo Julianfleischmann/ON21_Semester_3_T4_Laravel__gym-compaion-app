@@ -16,15 +16,16 @@
             <tr>
                 <td>{{ $trainingName->id }}</td>
                 <td>{{ $trainingName->name }}</td>
-                <td><a href="{{ route('training-names.edit', $trainingName->id) }}">Bearbeiten</a></td><!-- noch anlegen -->
+                <td><a class="btn btn-secondary" href="{{ route('training-names.edit', $trainingName->id) }}">Bearbeiten</a></td><!-- noch anlegen -->
                 <td>
                     <form action="{{ route('training-names.destroy', $trainingName->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit">Löschen</button>
+                        <button class="btn btn-warning" type="submit">Löschen</button>
                     </form>
                 </td>
             </tr>
         @endforeach
     </table>
+    <a class="btn btn-primary" href="{{ route('training-names.create') }}">Neues Training anlegen</a>
 </x-app-layout>

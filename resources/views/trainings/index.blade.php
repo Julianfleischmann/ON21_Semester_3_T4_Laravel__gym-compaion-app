@@ -26,12 +26,12 @@
                                 <td>{{ $training->weight }}</td>
                                 <td>{{ $training->repetition }}</td>
                                 <td>{{ $training->getUser->name }}</td>
-                                <td><a class="btn btn-primary" href="{{ route('trainings.edit',$training->id) }}">Edit</a></td>
+                                <td><a class="btn btn-secondary" href="{{ route('trainings.edit',$training->id) }}">bearbeiten</a></td>
                                 <td>
                                     <form action="{{ route('trainings.destroy', $training->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit">Delete</button>
+                                        <button class="btn btn-warning" type="submit">löschen</button>
                                     </form>
                                 </td>
                             </tr>
@@ -40,7 +40,7 @@
                     </table>
 
 
-                    <a class="btn btn-primary" href="{{ route('trainings.create') }}">Create new Training</a>
+                    <a class="btn btn-primary" href="{{ route('trainings.create') }}">Neues Training anlegen</a>
                 </div>
             </div>
         </div>

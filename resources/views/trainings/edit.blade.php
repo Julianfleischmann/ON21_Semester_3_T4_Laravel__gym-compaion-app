@@ -4,6 +4,9 @@
             {{ __('Trainings bearbeiten') }}
         </h2>
     </x-slot>
+
+    <a class="btn btn-secondary" href="{{ route('trainings.index') }}">zurück</a>
+
     <form action="{{ route('trainings.update', $training->id) }}" method="POST">
         @csrf
         @method('PUT')

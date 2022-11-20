@@ -4,6 +4,9 @@
             {{ __('Training Namen erstellen') }}
         </h2>
     </x-slot>
+
+    <a class="btn btn-secondary" href="{{ route('training-names.index') }}">zurück</a>
+
     <form action="{{ route('training-names.store') }}" method="POST">
         @csrf
         <input type="text" name="name" placeholder="Name der Trainingsart">
