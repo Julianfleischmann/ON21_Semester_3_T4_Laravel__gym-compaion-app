@@ -16,12 +16,13 @@ use App\Http\Controllers\TrainingController;
 */
 
 Route::get('/', function () {
-    return redirect( '/trainings');
+    return redirect( 'login');
 });
 
 
 Route::get('/', function () {
-})->middleware(['auth', 'verified'])->name('dashboard');
+    return redirect('trainings');
+})->middleware(['auth', 'verified'])->name('trainings');
 
 require __DIR__.'/auth.php';
 
@@ -33,13 +34,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Todo: evtl. besseren Namen finden am Ende
     Route::resource('training-names', TrainingNameController::class);
 
-//    Route::get('trainings/names', function(){
-//        return view ('trainings/names/index');
+//    Route::get('dashboard', function () {
+//        return view('dashboard');
 //    });
-
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    });
 
     Route::get('/test', function () {
         return view('test');
