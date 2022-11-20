@@ -1,4 +1,3 @@
-
 <x-app-layout>
     <form action="{{ route('trainings.update', $training->id) }}" method="POST">
         @csrf
