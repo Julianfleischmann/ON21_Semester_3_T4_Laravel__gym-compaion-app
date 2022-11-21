@@ -20,6 +20,48 @@
 
         <p>Benutzer: {{ Auth::user()->id }}</p>
         <button type="submit" class="btn btn-primary ml-3">Submit</button>
-
     </form>
+
+    <form id="createNewTrainingName" name="createNewTrainingName">
+        <label for="createNewTrainingName">Create new Training Name</label>
+        <input type="text" id="trainingName" name="trainingName" placeholder="enter training name" value="123123">
+
+        <button type="button" class="btn btn-primary" id="saveTrainingName" value="add">Hinzufügen</button>
+    </form>
+
+
 </x-app-layout>
+
+<script>
+    $(document).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $('#saveTrainingName').click(function (e) {
+            e.preventDefault();
+
+            const formData = {
+                name: $('#trainingName').val()
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "{{ route('training-names.store') }}",
+                // contentType: "application/json; charset=utf-8",
+                data: formData,
+                dataType: "json",
+                success: function (msg) {
+                    alert("This recipe has been saved in your profile area!");
+                },
+                // error: function (data) {
+                //     console.log('Error:', data);
+                //     console.info('Ajax name ist: ', data)
+                //     console.info('Feld ist: ', formData)
+                // }
+            });
+        });
+    });
+</script>
