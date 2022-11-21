@@ -56,7 +56,7 @@
                 success: function (data) {
                     // alert("This recipe has been saved in your profile area!");
                     console.info(data);
-                    // refreshNames();
+                    refreshNames();
                 },
                 error: function (data) {
                     console.log('Error:', data);
@@ -66,21 +66,19 @@
             });
         });
 
-    {{--    function refreshNames() {--}}
-    {{--        $.get("{{ URL::to('create') }}", function(data){--}}
-    {{--            $('#createNewTrainingName'.empty().html(data));--}}
-    {{--        })--}}
-    {{--    }--}}
-    {{--    function refreshNames() {--}}
-    {{--        // const o = new Option("text", "123")--}}
-    {{--        // $(o).html("asdfsdffdsffddffddd");--}}
-    {{--        // $("#name").append(o);--}}
-    {{--        $.get("{{ url::to('create') }}", function(){--}}
-    {{--            let o = new Option("otion text", "value")--}}
-    {{--            $(o).html("option text");--}}
-    {{--            $("name").append(o);--}}
-    {{--            // alert("click");--}}
-    {{--        })--}}
-    {{--    }--}}
+        function refreshNames() {
+
+        }
+        {{--function refreshNames() {--}}
+        {{--    // const o = new Option("text", "123")--}}
+        {{--    // $(o).html("asdfsdffdsffddffddd");--}}
+        {{--    // $("#name").append(o);--}}
+        {{--    $.get("{{ url::to('create') }}", function(){--}}
+        {{--        let o = new Option("otion text", "value")--}}
+        {{--        $(o).html("option text");--}}
+        {{--        $("name").append(o);--}}
+        {{--        // alert("click");--}}
+        {{--    })--}}
+        {{--}--}}
     });
 </script>
