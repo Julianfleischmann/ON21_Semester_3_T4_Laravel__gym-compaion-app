@@ -48,3 +48,6 @@
 
     </div>
 </x-app-layout>
+
+
+@include('layouts.create-training-ajax');
