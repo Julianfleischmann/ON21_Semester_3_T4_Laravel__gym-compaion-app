@@ -9,7 +9,7 @@
 {{--                    <a href="{{ route('dashboard') }}">--}}
 {{--                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />--}}
 {{--                    </a>--}}
-                    <a href="" {{ route('trainings.index') }}>
+                    <a href="{{ route('trainings.index') }}">
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-600"></x-application-logo>
                     </a>
 

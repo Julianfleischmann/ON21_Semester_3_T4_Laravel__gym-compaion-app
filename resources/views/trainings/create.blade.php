@@ -5,29 +5,44 @@
         </h2>
     </x-slot>
 
-    <a class="btn btn-secondary" href="{{ route('trainings.index') }}">zurück</a>
+    <div class="container">
+        <div class="bg-white rounded p-4 m-5">
+            <a class="btn btn-secondary" href="{{ route('trainings.index') }}">zurück</a>
 
-    <form action="{{ route('trainings.store') }}" method="POST">
+            <form class="mt-4" action="{{ route('trainings.store') }}" method="POST">
+                @csrf
+                <div class="mb-3">
+                    <label for="weight">Trainingsgewicht eintragen</label>
+                    <input type="text" name="weight" class="form-control" placeholder="Trainingsgewicht">
+                </div>
+                <div class="mb-3">
+                    <label for="repetition">Wiederholungen eintragen</label>
+                    <input type="text" name="repetition" class="form-control" placeholder="Wiederholungen">
+                </div>
+                <div class="mb-3">
+                    <label for="name_id">Art des Trainings auswählen</label>
+                    <select name="name_id" id="name">
+                        @foreach ($trainingNames as $trainingName)
+                            <option value="{{ $trainingName->id }}">{{ $trainingName->name }}</option>
+                        @endforeach
+                    </select>
+                    <div class="mt-4 mb-4 alert alert-warning" role="alert">
+                        Wenn die Trainingsart fehlt, kann diese einfach angelegt werden.
+                    </div>
+                </div>
 
-        @csrf
-        <input type="text" name="weight" class="form-control" placeholder="Trainingsgewicht">
-        <input type="text" name="repetition" class="form-control" placeholder="Wiederholungen">
-        <select name="name_id" id="name">
-            @foreach ($trainingNames as $trainingName)
-                <option value="{{ $trainingName->id }}">{{ $trainingName->name }}</option>
-            @endforeach
-        </select>
+                <button type="submit" class="btn btn-primary">Speichern</button>
+            </form>
 
-        <p>Benutzer: {{ Auth::user()->id }}</p>
-        <button type="submit" class="btn btn-primary ml-3">Submit</button>
-    </form>
+            <form id="createNewTrainingName" name="createNewTrainingName">
+                <label for="createNewTrainingName">Neues Training anlegen</label>
+                <input type="text" id="trainingName" name="trainingName" placeholder="enter training name" value="123123">
 
-    <form id="createNewTrainingName" name="createNewTrainingName">
-        <label for="createNewTrainingName">Create new Training Name</label>
-        <input type="text" id="trainingName" name="trainingName" placeholder="enter training name" value="123123">
+                <button type="button" class="btn btn-primary" id="saveTrainingName" value="add">Hinzufügen</button>
+            </form>
+        </div>
+    </div>
 
-        <button type="button" class="btn btn-primary" id="saveTrainingName" value="add">Hinzufügen</button>
-    </form>
 
 
 </x-app-layout>
@@ -55,8 +70,8 @@
                 // dataType: "json",
                 success: function (data) {
                     // alert("This recipe has been saved in your profile area!");
-                    console.info(data);
-                    refreshNames();
+                    // console.info(data);
+                    // refreshNames();
                 },
                 error: function (data) {
                     console.log('Error:', data);
