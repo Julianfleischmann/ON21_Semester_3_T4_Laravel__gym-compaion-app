@@ -30,17 +30,18 @@
                                     @endif value="{{ $trainingName->id }}">{{ $trainingName->name }}</option>
                         @endforeach
                     </select>
-                    <div class="mt-4 mb-4 alert alert-warning" role="alert">
-                        Wenn die Trainingsart fehlt, kann diese einfach angelegt werden.
-                    </div>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Speichern</button>
 
+                <div class="mt-4 mb-4 alert alert-warning" role="alert">
+                    Wenn eine Trainingsart fehlt, kann diese einfach angelegt werden.
+                </div>
+
             </form>
             <form id="createNewTrainingName" name="createNewTrainingName">
                 <label for="createNewTrainingName">Neues Training anlegen</label>
-                <input type="text" id="trainingName" name="trainingName" placeholder="enter training name" value="123123">
+                <input type="text" id="trainingName" name="trainingName" placeholder="enter training name" value="Muster">
 
                 <button type="button" class="btn btn-primary" id="saveTrainingName" value="add">Hinzufügen</button>
             </form>
