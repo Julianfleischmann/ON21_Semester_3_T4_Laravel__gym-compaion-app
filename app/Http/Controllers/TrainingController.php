@@ -29,7 +29,7 @@ class TrainingController extends Controller
     public function index()
     {
         // der Variable trainings alle Daten aus dem Model Training zuweisen und an den view trainings.index übergeben
-        $trainings = Training::all();
+        $trainings = Training::orderBy('id')->paginate(10);
 
         return view('trainings.index', compact( 'trainings'));
     }

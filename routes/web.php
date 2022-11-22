@@ -24,8 +24,6 @@ Route::get('/', function () {
     return redirect('trainings');
 })->middleware(['auth', 'verified'])->name('trainings');
 
-require __DIR__.'/auth.php';
-
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
@@ -43,3 +41,5 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
 });
+
+require __DIR__.'/auth.php';

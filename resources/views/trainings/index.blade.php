@@ -36,6 +36,7 @@
                 @endforeach
                 {{--                        {{ $trainings }}--}}
             </table>
+                {{ $trainings->links() }}
             <a class="btn btn-primary" href="{{ route('trainings.create') }}">Neues Training anlegen</a>
         </div>
     </div>
