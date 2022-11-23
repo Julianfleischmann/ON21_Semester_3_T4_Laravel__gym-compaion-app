@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CountTrainings;
 use App\Http\Controllers\TrainingNameController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TrainingController;
@@ -31,6 +32,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Todo: evtl. besseren Namen finden am Ende
     Route::resource('training-names', TrainingNameController::class);
+
+    Route::get('count-trainings', [CountTrainings::class, 'countTrainings'])->name('count-trainings');
 
 //    Route::get('dashboard', function () {
 //        return view('dashboard');

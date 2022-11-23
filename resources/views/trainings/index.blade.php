@@ -46,7 +46,20 @@
             </table>
                 {{ $trainings->links() }}
             <a class="btn btn-primary" href="{{ route('trainings.create') }}">Neues Training anlegen</a>
+            <a id="count_trainings" class="btn btn-primary">Wie viele Trains habe ich gemacht?</a>
+            <p>Anzahl der Trainings: <span id="counted_trainings"></span></p>
         </div>
     </div>
 
 </x-app-layout>
+
+<script>
+    $('#count_trainings').click(function() {
+        $.ajax({
+            url: "{{ route('count-trainings') }}",
+            success: function (result) {
+                $("#counted_trainings").html(result);
+            }
+        })
+    })
+</script>
