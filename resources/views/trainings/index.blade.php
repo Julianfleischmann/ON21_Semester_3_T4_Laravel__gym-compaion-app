@@ -25,8 +25,8 @@
                     <th>Löschen</th>
                 </tr>
 
+{{--                Trainings werden als Training in der Foreach-Schleife übergeben und Zeile für Zeile ausgegeben--}}
                 @foreach ($trainings as $training)
-
                     <tr>
                         <td>{{ $training->getTrainingName->name }}</td>
                         <td>{{ $training->weight }}</td>
@@ -42,8 +42,8 @@
                         </td>
                     </tr>
                 @endforeach
-                {{--                        {{ $trainings }}--}}
             </table>
+{{--            Pagination wird ausgegeben--}}
                 {{ $trainings->links() }}
             <a class="btn btn-primary" href="{{ route('trainings.create') }}">Neues Training anlegen</a>
             <a id="count_trainings" class="btn btn-secondary">Wie viele Trains habe ich gemacht?</a>
@@ -53,6 +53,7 @@
 
 </x-app-layout>
 
+{{--AJAX-Abfrage der Anzahl der Trainings--}}
 <script>
     $('#count_trainings').click(function() {
         $.ajax({
@@ -61,5 +62,5 @@
                 $("#counted_trainings").html(result);
             }
         })
-    })
+    });
 </script>
