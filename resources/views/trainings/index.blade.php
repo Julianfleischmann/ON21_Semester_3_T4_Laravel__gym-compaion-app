@@ -46,8 +46,8 @@
             </table>
                 {{ $trainings->links() }}
             <a class="btn btn-primary" href="{{ route('trainings.create') }}">Neues Training anlegen</a>
-            <a id="count_trainings" class="btn btn-primary">Wie viele Trains habe ich gemacht?</a>
-            <p>Anzahl der Trainings: <span id="counted_trainings"></span></p>
+            <a id="count_trainings" class="btn btn-secondary">Wie viele Trains habe ich gemacht?</a>
+            <h4 class="mt-4 h4">Anzahl der Trainings: <span id="counted_trainings"></span></h4>
         </div>
     </div>
 
