@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Training;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Gate;
 
 class TrainingController extends Controller
 {
@@ -97,6 +98,11 @@ class TrainingController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Training $training) {
+
+        if (! Gate::allows('update-training', $training)) {
+            abort(403, 'Du darfst nur Deinen eigenen Eintrag bearbeiten');
+        }
+
         $request->validate([
             'weight' => 'required',
             'repetition' => 'required'
@@ -111,6 +117,10 @@ class TrainingController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Training $training) {
+
+        if (! Gate::allows('update-training', $training)) {
+            abort(403, 'Du darfst nur Deinen eigenen Eintrag löschen');
+        }
         $training->delete();
         return redirect()->route('trainings.index')->with('success', 'Das Training wurde erfolgreich gelöscht.');
     }
