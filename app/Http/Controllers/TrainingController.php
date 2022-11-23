@@ -11,15 +11,6 @@ use Illuminate\Support\Facades\Gate;
 
 class TrainingController extends Controller
 {
-//    private $user;
-//
-//    public function __construct()
-//    {
-//        if (Auth::check()) {
-//            $this->middleware('auth');
-//            $this->user = Auth::user()->id;
-//        }
-//    }
 
     /**
      * Display a listing of the resource.
@@ -58,9 +49,13 @@ class TrainingController extends Controller
             'repetition' => 'required'
         ]);
 
+
+//        Auth::check();
+//        $id = Auth::id();
+
         // Den aktuellen Array mithilfe der Helper-Function Arr::add der Variable des aktuellen Users erweitern
 //        $data = $request->post();
-//        $data = Arr::add($data, 'user_id', $this->user);
+//        $data = Arr::add($data, 'user_id', $id);
         //return print_r($data);
 
 //        Training::create($data);
