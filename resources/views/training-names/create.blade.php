@@ -13,7 +13,10 @@
                 @csrf
                 <div class="mb-3">
                     <label for="name">Name der Trainingsart eingeben</label>
-                    <input type="text" name="name" placeholder="Name der Trainingsart">
+                    <input type="text" name="name" placeholder="Name der Trainingsart" required="required">
+                    @error('name')
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    @enderror
                 </div>
                 <button class="btn btn-primary" type="submit">Speichern</button>
             </form>

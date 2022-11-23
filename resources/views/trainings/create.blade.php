@@ -7,6 +7,12 @@
         </h2>
     </x-slot>
 
+    @if(session('status'))
+        <div class="alert alert-success mb-1 mt-1">
+            {{ session('status') }}
+        </div>
+    @endif
+
     <div class="container">
         <div class="bg-white rounded p-4 m-5">
             <a class="btn btn-secondary" href="{{ route('trainings.index') }}">zurück</a>
