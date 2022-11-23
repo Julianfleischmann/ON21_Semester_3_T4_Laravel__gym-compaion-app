@@ -7,6 +7,14 @@
 
     <div class="container">
         <div class="bg-white rounded p-4 m-5">
+{{--            Sofern Nachrichten ($message) an den View übergeben werden, werden diese ausgegeben--}}
+{{--            https://laravel.com/docs/9.x/responses#redirecting-with-flashed-session-data--}}
+            @if ($message = Session::get('success'))
+                <div class="alert alert-success">
+                    <p>{{ $message }}</p>
+                </div>
+            @endif
+
             <table class="table">
                 <tr>
                     <th>Trainingsart</th>

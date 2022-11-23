@@ -44,7 +44,7 @@ class TrainingNameController extends Controller
 
         TrainingName::create($request->post());
 
-        return redirect()->route('training-names.index');
+        return redirect()->route('training-names.index')->with('success', 'Der Trainingname wurde erfolreich gespeichert.');
     }
 
     /**
@@ -92,7 +92,7 @@ class TrainingNameController extends Controller
         ]);
 
         $trainingName->fill($request->post())->save();
-        return redirect()->route('training-names.index');
+        return redirect()->route('training-names.index')->with('success', 'Der Trainingname wurde erfolreich aktualisiert.');
     }
 
     /**
@@ -105,6 +105,6 @@ class TrainingNameController extends Controller
     {
         $trainingName->delete();
 //        return $trainingName;
-        return redirect()->route('training-names.index');
+        return redirect()->route('training-names.index')->with('success', 'Der Trainingname wurde erfolreich gelöscht.');
     }
 }
