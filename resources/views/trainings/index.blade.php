@@ -18,7 +18,7 @@
             <table class="table">
                 <tr>
                     <th>Trainingsart</th>
-                    <th>Trainingsgewicht</th>
+                    <th>Trainingsgewicht (KG)</th>
                     <th>Wiederholungen</th>
                     <th>Erstellt von</th>
                     <th>Bearbeiten</th>

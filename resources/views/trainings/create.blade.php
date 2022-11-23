@@ -20,12 +20,18 @@
             <form class="mt-4" action="{{ route('trainings.store') }}" method="POST">
                 @csrf
                 <div class="mb-3">
-                    <label for="weight">Trainingsgewicht eintragen</label>
+                    <label for="weight">Trainingsgewicht in KG eintragen</label>
                     <input type="text" name="weight" class="form-control" placeholder="Trainingsgewicht">
+                    @error('weight')
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="repetition">Wiederholungen eintragen</label>
                     <input type="text" name="repetition" class="form-control" placeholder="Wiederholungen">
+                    @error('repetition')
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="name_id">Art des Trainings auswählen</label>
@@ -34,7 +40,9 @@
                             <option value="{{ $trainingName->id }}">{{ $trainingName->name }}</option>
                         @endforeach
                     </select>
-
+                    @error('name')
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <button type="submit" class="btn btn-primary">Speichern</button>

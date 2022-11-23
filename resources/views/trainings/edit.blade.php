@@ -17,7 +17,7 @@
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
-                    <label for="weight">Trainingsgewicht eintragen</label>
+                    <label for="weight">Trainingsgewicht in KG eintragen</label>
                     <input type="text" name="weight" class="form-control" placeholder="Trainingsgewicht"
                            value="{{ $training->weight }}">
                     @error('weight')
