@@ -10,15 +10,15 @@ use Illuminate\Support\Arr;
 
 class TrainingController extends Controller
 {
-    private $user;
-
-    public function __construct()
-    {
-        if (Auth::check()) {
-            $this->middleware('auth');
-            $this->user = Auth::user()->id;
-        }
-    }
+//    private $user;
+//
+//    public function __construct()
+//    {
+//        if (Auth::check()) {
+//            $this->middleware('auth');
+//            $this->user = Auth::user()->id;
+//        }
+//    }
 
     /**
      * Display a listing of the resource.
@@ -58,13 +58,13 @@ class TrainingController extends Controller
         ]);
 
         // Den aktuellen Array mithilfe der Helper-Function Arr::add der Variable des aktuellen Users erweitern
-        $data = $request->post();
-        $data = Arr::add($data, 'user_id', $this->user);
+//        $data = $request->post();
+//        $data = Arr::add($data, 'user_id', $this->user);
         //return print_r($data);
 
-        Training::create($data);
-//        Training::create($request->post());
-        return redirect()->route('trainings.index');
+//        Training::create($data);
+        Training::create($request->post());
+        return redirect()->route('trainings.index')->with('success', 'Das Training wurde erfolgreich gespeichert.');
     }
 
     /**
@@ -103,7 +103,7 @@ class TrainingController extends Controller
         ]);
 
         $training->fill($request->post())->save();
-        return redirect()->route('trainings.index');
+        return redirect()->route('trainings.index')->with('success', 'Das Training wurde erfolgreich aktualisiert.');
     }
 
     /**
@@ -112,6 +112,6 @@ class TrainingController extends Controller
      */
     public function destroy(Training $training) {
         $training->delete();
-        return redirect()->route('trainings.index');
+        return redirect()->route('trainings.index')->with('success', 'Das Training wurde erfolgreich gelöscht.');
     }
 }
