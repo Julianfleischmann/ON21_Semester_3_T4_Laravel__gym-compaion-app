@@ -9,19 +9,20 @@ use Illuminate\Http\Request;
 class TrainingNameController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Wird für das Listing der Namen verwendet (Tabelle)
+     * Query Builder von Laravel wird hier bentutzt.
+     * https://laravel.com/docs/9.x/queries
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
         $trainingNames = TrainingName::all();
-
         return view('training-names.index', compact('trainingNames'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Gibt den View training-names.create zurück
      *
      * @return \Illuminate\Contracts\View\View
      */
@@ -31,7 +32,8 @@ class TrainingNameController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Speichert eine neu angelegte ressource.
+     * Informationen für einen Seitenwechsel werden hier ebenfalls über den RedirectResponse an den View übergeben.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
@@ -48,18 +50,7 @@ class TrainingNameController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
+     * Gibt das Template für das Bearbeiten-Formular der training-names zurück
      *
      * @param  int  $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
@@ -69,17 +60,10 @@ class TrainingNameController extends Controller
         return view('training-names.edit', compact('trainingName'));
     }
 
-
-
-//    public function edit(Training $training)
-//    {
-//
-//        $trainingNames = TrainingName::all();
-//        return view('trainingnames.edit', compact('training', 'trainingNames'));
-//    }
-
     /**
      * Update the specified resource in storage.
+     * Aktualisiert die Trainings beim Speichern von bereits vorhandenen Trainingsnamen
+     * Informationen für einen Seitenwechsel werden hier ebenfalls über den RedirectResponse an den View übergeben.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $trainingName
@@ -96,7 +80,8 @@ class TrainingNameController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Löschen der Trainingsnamen.
+     * Informationen für einen Seitenwechsel werden hier ebenfalls über den RedirectResponse an den View übergeben.
      *
      * @param  TrainingName $trainingName
      * @return \Illuminate\Http\RedirectResponse
@@ -104,7 +89,6 @@ class TrainingNameController extends Controller
     public function destroy(TrainingName $trainingName)
     {
         $trainingName->delete();
-//        return $trainingName;
         return redirect()->route('training-names.index')->with('success', 'Der Trainingname wurde erfolreich gelöscht.');
     }
 }

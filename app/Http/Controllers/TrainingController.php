@@ -5,16 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\TrainingName;
 use Illuminate\Http\Request;
 use App\Models\Training;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Gate;
+
+/**
+ * Diese Klasse beinhaltet alle Trainings
+ * In dem Controller werden Trainings bearbeitet, ausgegeben, gelöscht und erstellt.
+ * Ein kompletter CRUD-Zyklus wird hier abgebildet.
+ *
+ */
 
 class TrainingController extends Controller
 {
 
     /**
-     * Display a listing of the resource.
-     * Query Builder from Laravel will be used here
+     * Wird für das Listing der Inahlte verwendet (Tabelle)
+     * Query Builder von Laravel wird hier bentutzt.
+     * https://laravel.com/docs/9.x/queries
      *
      * @return \Illuminate\Http\Response
      */
@@ -27,7 +33,7 @@ class TrainingController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Gibt den View für trainings/create.blade.php aus
      *
      * @return \Illuminate\Contracts\View\View
      */
@@ -39,6 +45,7 @@ class TrainingController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * Informationen für einen Seitenwechsel werden hier ebenfalls über den RedirectResponse an den View übergeben.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
@@ -49,22 +56,13 @@ class TrainingController extends Controller
             'repetition' => 'required'
         ]);
 
-
-//        Auth::check();
-//        $id = Auth::id();
-
-        // Den aktuellen Array mithilfe der Helper-Function Arr::add der Variable des aktuellen Users erweitern
-//        $data = $request->post();
-//        $data = Arr::add($data, 'user_id', $id);
-        //return print_r($data);
-
-//        Training::create($data);
         Training::create($request->post());
         return redirect()->route('trainings.index')->with('success', 'Das Training wurde erfolgreich gespeichert.');
     }
 
     /**
-     * Display the specified resource.
+     * zeigt eine ausgewälte Ressource an
+     * Todo: nicht verwendet, kann in Zukunft noch ausgearbeitet werdenm, wenn mehr Informationen angezeigt werden sollen.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -75,7 +73,8 @@ class TrainingController extends Controller
     }
 
     /**
-     * Edit Button with view training und gibt dem Template die training Variable mit
+     * Edit Button mit dem view training
+     * gibt dem Template die training Variable, soeie die Training Names mit
      *
      * @param Training $training
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
@@ -87,6 +86,10 @@ class TrainingController extends Controller
 
     /**
      * Update Method for Trainings
+     * Aktualisiert die Trainings beim Speichern von bereits vorhandenen Trainings
+     * Zudem ist ein Gate mit eingebaut, welches prüft, ob es dem Nutzer erlaubt ist, das Training zu bearbeiten.
+     * Nur der Account, welcher das Training erstellt hat, darf dieses auch bearbeiten.
+     * Informationen für einen Seitenwechsel werden hier ebenfalls über den RedirectResponse an den View übergeben.
      *
      * @param Request $request
      * @param Training $training
@@ -108,6 +111,11 @@ class TrainingController extends Controller
     }
 
     /**
+     * Löschen der angelegten Einträge wird hierüber gelöst.
+     * Zudem ist ein Gate mit eingebaut, welches prüft, ob es dem Nutzer erlaubt ist, das Training zu bearbeiten.
+     * Nur der Account, welcher das Training erstellt hat, darf dieses auch bearbeiten.
+     * Informationen für einen Seitenwechsel werden hier ebenfalls über den RedirectResponse an den View übergeben.
+     *
      * @param Training $training
      * @return \Illuminate\Http\RedirectResponse
      */

@@ -21,6 +21,7 @@ class AuthServiceProvider extends ServiceProvider
 
     /**
      * Register any authentication / authorization services.
+     * Nur der Account, welcher das Training erstellt hat, darf dieses auch bearbeiten.
      *
      * @return void
      */

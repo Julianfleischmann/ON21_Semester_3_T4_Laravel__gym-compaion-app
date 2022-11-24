@@ -23,6 +23,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
 
         // Added by JF from https://laracasts.com/discuss/channels/laravel/current-user-in-middleware
+        // Nicht länger benötigt, da die ID nun direkt im Model zugeordnet wird.
 //        \App\Http\Middleware\EncryptCookies::class,
 //        \Illuminate\Session\Middleware\StartSession::class,
     ];

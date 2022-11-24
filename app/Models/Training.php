@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Das Model dient der Kommunikation mit der Datenbanktabelle "Trainings"
+ */
+
 class Training extends Model
 {
     use HasFactory;
@@ -17,6 +21,7 @@ class Training extends Model
         'user_id'
     ];
 
+
     protected static function booted()
     {
         static::creating(function ($fillable) {
@@ -24,11 +29,20 @@ class Training extends Model
         });
     }
 
-
+    /**
+     * getUser gibt den Nutzer anhand der Fremdschlüssel id user_id zurück
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function getUser() {
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    /**
+     * getTrainingName gibt die TrainingsNamen anhand der name_id zurück
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function getTrainingName() {
         return $this->belongsTo(TrainingName::class, 'name_id');
     }

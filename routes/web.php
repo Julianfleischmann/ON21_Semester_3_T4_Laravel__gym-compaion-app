@@ -20,28 +20,23 @@ Route::get('/', function () {
     return redirect( 'login');
 });
 
-
+/**
+ * Weiterleiten auf die Trainings-Seite
+ */
 Route::get('/', function () {
     return redirect('trainings');
 })->middleware(['auth', 'verified'])->name('trainings');
 
-
+/**
+ * In der Middleware befinden sich lediglich Seiten, die nur autorisierten Nutzern zur Verfügung stehen.
+ */
 Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::resource('trainings', TrainingController::class);
 
-    // Todo: evtl. besseren Namen finden am Ende
     Route::resource('training-names', TrainingNameController::class);
 
     Route::get('count-trainings', [CountTrainings::class, 'countTrainings'])->name('count-trainings');
-
-//    Route::get('dashboard', function () {
-//        return view('dashboard');
-//    });
-
-    Route::get('/test', function () {
-        return view('test');
-    });
 
 });
 

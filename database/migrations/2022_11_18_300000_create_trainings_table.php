@@ -4,6 +4,11 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * Legt die Tabelle trainings an.
+ * Aufbau und Datenmodell in der Dokumentation beschrieben.
+ */
+
 return new class extends Migration
 {
     /**
@@ -27,7 +32,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
 
-            // Foreign Keys end
+            // Foreign Keys Ende
             $table->timestamps();
         });
     }
