@@ -4,6 +4,7 @@
 /public/storage
 /storage/*.key
 /vendor
+!vendor/laravel/sail/database/mysql/import.sql
 .env
 .env.backup
 .env.production
