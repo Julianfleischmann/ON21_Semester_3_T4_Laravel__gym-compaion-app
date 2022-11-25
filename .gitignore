@@ -3,8 +3,8 @@
 /public/hot
 /public/storage
 /storage/*.key
-/vendor
 !/vendor/laravel/sail/database/mysql/import.sql
+/vendor/*
 .env
 .env.backup
 .env.production
