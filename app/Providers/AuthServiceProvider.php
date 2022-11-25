@@ -29,9 +29,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        // Anpassung hier von Julian Fleischmann – Zeile 24
         Gate::define('update-training', function (User $user, Training $training) {
             return $user->id === $training->user_id;
         });
-        //
+        // bis hier
     }
 }
