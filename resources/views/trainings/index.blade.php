@@ -63,7 +63,6 @@ Template für die Übersicht der Trainings
             url: "{{ route('count-trainings') }}",
             success: function (result) {
                 $("#counted_trainings").html(result);
-            }
-        })
+            }});
     });
 </script>
